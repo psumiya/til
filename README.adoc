@@ -1,0 +1,5 @@
+= Today I Learnt
+
+Short form content. Long form content available at https://sumiya.page.
+
+Inspired by https://github.com/simonw/til.
