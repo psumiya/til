@@ -1,0 +1,15 @@
+= Automatic Redirect From One Html to Another
+
+Before github came out with social links on profiles, to get verified on mastodon, I had needed to set up an automatic redirect to get Mastodon to verify my identity as well link to my actual profile.
+
+Mastodon -> Proxy Html with rel=me link -> Re-direct to github profile
+
+The redirect was enabled by the `http-equiv` pragma directive like this.
+
+```
+<meta http-equiv="refresh" content="0; URL=https://github.com/psumiya">
+```
+
+See the usage here: https://github.com/psumiya/psumiya.github.io/blob/main/index.html
+
+Here is a link that has better details about this directive: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv
