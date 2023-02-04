@@ -1,5 +1,5 @@
 = Today I Learnt
 
-Short form content. Long form content available at https://sumiya.page.
+Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
 Inspired by https://github.com/simonw/til.
