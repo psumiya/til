@@ -2,4 +2,19 @@
 
 Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
+4 TILs so far.
+
 Inspired by https://github.com/simonw/til.
+
+== asciidoc
+
+* link:asciidoc/embed-gif-in-asciidoc.adoc/[Embed Gif in AsciiDoc] - Feb-04-2023
+
+== html
+
+* link:html/automatic-redirect-from-html-to-another-html-using-http-equiv.adoc/[Automatic Re-direct from one HTML page to another page] - Feb-04-2023
+
+== http
+
+* link:http/options/cors.adoc/[Resolve CORS issue when a browser submits a POST request to a protected API] - Jan-12-2023
+
