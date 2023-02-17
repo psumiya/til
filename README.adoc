@@ -2,7 +2,7 @@
 
 Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
-3 TILs so far.
+4 TILs so far.
 
 Inspired by https://github.com/simonw/til.
 
@@ -18,3 +18,6 @@ Inspired by https://github.com/simonw/til.
 
 * link:http/options/cors.adoc/[Resolve CORS issue when a browser submits a POST request to a protected API] - Jan-12-2023
 
+== jmh
+
+* link:jmh/setup-jmh-for-a-gradle-project.adoc[Setup JMH for a Gradle Project]

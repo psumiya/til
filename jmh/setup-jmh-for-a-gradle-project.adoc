@@ -15,3 +15,5 @@ This shows a sample project.
 I did the same setup on my repo for https://github.com/psumiya/json-generator[Json Generator].
 
 See my commits https://github.com/psumiya/json-generator/commit/f2945ffdd07a92a1c83b12492c1f6a27aa4f84b5#diff-655a69127303f6948c0b150902436756156ec7f82640e994c1f552cbdec5bbce[here] and https://github.com/psumiya/json-generator/commit/bd87b0c1386bfd3c18290631134d1714e76b88cb#diff-084917fc9652fedcaaafbb018113f445b181c4ab9daf8e568ca6406a837be45c[here] for better view of how to add this to an existing project.
+
+Similarly, the README of that repo shows the performance numbers, as seen here: https://github.com/psumiya/json-generator#performance[json-generator#performance]
