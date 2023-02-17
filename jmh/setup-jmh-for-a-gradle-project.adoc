@@ -1,0 +1,17 @@
+= Setup JMH For a Gradle Project
+Firstname Lastname <author@asciidoctor.org>
+3.0, July 29, 2022: AsciiDoc article template
+:toc:
+:icons: font
+
+This is the plugin I used to add performance tests to one of my repositories.
+
+https://github.com/melix/jmh-gradle-plugin
+
+Even better is a resource that shows sample project, a couple of clicks deeper in that repo, here: https://github.com/melix/jmh-gradle-plugin/tree/master/samples/simple-java/groovy-dsl
+
+This shows a sample project.
+
+I did the same setup on my repo for https://github.com/psumiya/json-generator[Json Generator].
+
+See my commits https://github.com/psumiya/json-generator/commit/f2945ffdd07a92a1c83b12492c1f6a27aa4f84b5#diff-655a69127303f6948c0b150902436756156ec7f82640e994c1f552cbdec5bbce[here] and https://github.com/psumiya/json-generator/commit/bd87b0c1386bfd3c18290631134d1714e76b88cb#diff-084917fc9652fedcaaafbb018113f445b181c4ab9daf8e568ca6406a837be45c[here] for better view of how to add this to an existing project.
