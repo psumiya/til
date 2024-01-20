@@ -1,11 +1,11 @@
 = Script to move generated Rust binary code
 
-link:../index.html[Home]
-
 :Description: Script to move generated Rust binary code
 :author: Sumiya
 :nofooter:
 :sectlinks:
+
+== Tinkerer
 
 One night this week, I was trying some lessons from rust by example.
 
@@ -30,6 +30,8 @@ Intuitively, I thought I needed a script that could both run the `rustc` command
 
 As with Java, where you would use Maven or Gradle to structure your projects, Rust offers `cargo`. However, the idea of writing my own script had already possessed me. And what kind of tinkerer would I be if I did not follow through!
 
+== Broad Strokes
+
 Of course, I am terrible at remembering stuff, so I need to rely heavily on internet on helping with finding the right syntax/command for different shell script steps.
 
 I opened a new file and started thinking about what I would need.
@@ -38,22 +40,26 @@ I opened a new file and started thinking about what I would need.
 * Then figure out a way to move the generated output to a target directory.
 * Use the characteristic that `rustc` generates executable with the same name as the source file name, to identify which file to move. For example, for a source code file `hello.rs`, the executable would be named `hello`.
 
-Problem: How would I pass the rust file name into the script?
+=== Problem: How would I pass the rust file name into the script?
 
 Search on Google: Use `$0` where 0 is the first positioned argument on the command line.
 ```bash
 rustc $0
 ```
 
-Next step, I need to move the generated binary to a directory/folder of my choice.
+=== Next step, I need to move the generated binary to a directory/folder of my choice.
 
 Problem: How do I set a destination directory for the output of `rustc`?
 
 I searched Google and pretty much every linked result was not what I was intending to do.
 
+== Evolution
+
 I had been trying Perplexity for one day, and thought to give that a try.
 
 Here are a series of interactions I had with Perplexity.
+
+image:shell-rustc.png[]
 
 Here is a list of queries, in sequence.
 
