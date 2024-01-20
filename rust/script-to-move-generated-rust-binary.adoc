@@ -61,7 +61,7 @@ Here are a series of interactions I had with Perplexity.
 
 image:shell-rustc.png[]
 
-Here is a list of queries, in sequence.
+Here is a list of queries from above image that I tried, in order.
 
 * assign parameter to a variable
 * assign shell parameter to a variable
