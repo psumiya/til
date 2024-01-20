@@ -2,9 +2,13 @@
 
 Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
-4 TILs so far.
+5 TILs so far.
 
 Inspired by https://github.com/simonw/til.
+
+== rust
+
+* link:rust/script-to-move-generated-rust-binary.adoc/[Script to move the output of rustc to a destination] - Jan-20-2024
 
 == asciidoc
 
