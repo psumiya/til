@@ -70,7 +70,7 @@ Here is a list of queries, in sequence.
 * how to extract a substring from a string in shell scripting without the last two characters
 * how to extract a substring from a string in shell scripting using awk
 * shell check if previous command completed successfully
-* give me a shell script that uses an input parameter as rust file name, then runs rustc command to compile, and on success, move the resulting binary to a bin directory
+* *_give me a shell script that uses an input parameter as rust file name, then runs rustc command to compile, and on success, move the resulting binary to a bin directory_*
 
 Within a couple of minutes, I was able to find the right question to ask. And got rewarded with a script that just worked as is.
 
