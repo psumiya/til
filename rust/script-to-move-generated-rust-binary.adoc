@@ -1,0 +1,76 @@
+= Script to move generated Rust binary code
+
+link:../index.html[Home]
+
+:Description: Script to move generated Rust binary code
+:author: Sumiya
+:nofooter:
+:sectlinks:
+
+One night this week, I was trying some lessons from rust by example.
+
+The way I had structured my project, as I was creating executable files with the `rustc` command, I ended up with those executables alongside my rust source code files.
+
+For example, the project structure looked like this after I had tried a few examples:
+
+* hello
+** hello
+** hello.rs
+** hello
+** comments.rs
+** comments
+** formatted_print.rs
+* primitives
+** literals.rs
+** literals
+
+This started to bother me as my years of writing Java has made me keep my source code and the actual executable separate from each other.
+
+Intuitively, I thought I needed a script that could both run the `rustc` command to generate a binary executable, and move the generated binary to a target directory.
+
+As with Java, where you would use Maven or Gradle to structure your projects, Rust offers `cargo`. However, the idea of writing my own script had already possessed me. And what kind of tinkerer would I be if I did not follow through!
+
+Of course, I am terrible at remembering stuff, so I need to rely heavily on internet on helping with finding the right syntax/command for different shell script steps.
+
+I opened a new file and started thinking about what I would need.
+
+* Create a script that does the same thing as `rustc` does.
+* Then figure out a way to move the generated output to a target directory.
+* Use the characteristic that `rustc` generates executable with the same name as the source file name, to identify which file to move. For example, for a source code file `hello.rs`, the executable would be named `hello`.
+
+Problem: How would I pass the rust file name into the script?
+
+Search on Google: Use `$0` where 0 is the first positioned argument on the command line.
+```bash
+rustc $0
+```
+
+Next step, I need to move the generated binary to a directory/folder of my choice.
+
+Problem: How do I set a destination directory for the output of `rustc`?
+
+I searched Google and pretty much every linked result was not what I was intending to do.
+
+I had been trying Perplexity for one day, and thought to give that a try.
+
+Here are a series of interactions I had with Perplexity.
+
+Here is a list of queries, in sequence.
+
+* assign parameter to a variable
+* assign shell parameter to a variable
+* shell substring
+* shell substring except last 2 characters
+* how to extract a substring from a string in shell scripting without the last two characters
+* how to extract a substring from a string in shell scripting using awk
+* shell check if previous command completed successfully
+* give me a shell script that uses an input parameter as rust file name, then runs rustc command to compile, and on success, move the resulting binary to a bin directory
+
+Within a couple of minutes, I was able to find the right question to ask. And got rewarded with a script that just worked as is.
+
+This particular tool (Perplexity) also provided references, or cited sources, right at the start of every query result. This is great in terms of cross-checking whether you trust that source, as well as check the content of the source.
+
+It is also not necessary to sign-in to use the tool.
+
+
+
