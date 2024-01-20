@@ -1,6 +1,4 @@
 = Setup JMH For a Gradle Project
-Firstname Lastname <author@asciidoctor.org>
-3.0, July 29, 2022: AsciiDoc article template
 :toc:
 :icons: font
 
