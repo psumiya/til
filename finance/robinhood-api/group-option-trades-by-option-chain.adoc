@@ -82,7 +82,7 @@ Here is the final result I ended up with:
 
 [source:python]
 ----
-include::options.py[options.py]
+include::options.py[View options.py Source Code]
 ----
 
-include::Options.adoc[]
+include::Options.adoc[Run options.py]
