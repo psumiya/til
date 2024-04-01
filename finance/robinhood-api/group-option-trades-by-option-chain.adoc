@@ -1,6 +1,5 @@
 = Python Code to invoke Robinhood API and Customize Display of Option History
-Firstname Lastname <author@asciidoctor.org>
-3.0, July 29, 2022: AsciiDoc article template
+
 :author: Sumiya
 :nofooter:
 :sectlinks:
@@ -10,7 +9,7 @@ The History tab on Robinhood is not robust enough for me to analyze my own tradi
 
 I need a different way to slice and dice my trades and understand my trading psyche.
 
-This write-up focuses on writing a script to fetch my Robinhood transaction history via API calls I could see from my browser, and begin customizing results in the manner I understand them.
+This write-up focuses on writing a script to fetch my Robinhood transaction history. I want to use API calls I can see from my browser, and begin customizing results in a manner I understand.
 
 == What I Learnt?
 
@@ -23,13 +22,15 @@ Here is how I broke down the problem:
 
 * How would I invoke Robinhood APIs?
 * Hoping a JSON response is returned, how would I parse the JSON response?
+* How would I filter, format, and display the necessary results?
 
 === Prompts
 
 ==== Here is a view of the search session
-image:search-session.png[]
+* PDF View: link:search-session.pdf[]
+* Perplexity Link: https://www.perplexity.ai/search/sample-code-to-Gzg53YXjSpCfx.bJD7kTFA
 
-Here are the prompts from the above image that I tried along with my narration of what I was thinking as I asked these questions:
+Here are the prompts, copied from the above search session that I tried along with my narration of what I was thinking as I asked these questions:
 
 . sample code to read robinhood api
 ** This returned a 3rd party library based code, as well as using username and password. I was a little uncomfortable passing in credentials to a 3rd party library for this experiment.
@@ -71,8 +72,16 @@ create a table of chain_symbol, opening_strategy, net_amount_direction, net_amou
 . ValueError: Invalid isoformat string: '2024-03-25T15:10:57.063284Z'
 
 === Summary
-Here is the final result I ended up with: link:options.py[options.py]
+
+Fun Fact, again: I do not know Python, yet!
+
+What these LLM tools and this experiment shows is if you are looking to hack something together quickly for a domain you understand, but using tools (here, the specific programming language, python) you may not understand, the LLM _can_ be your ally.
 
 
-Fun Fact, again: I do not know Python, yet! What these LLM tools and this experiment shows is if you are looking to hack something together quickly for a domain you understand, but using tools (here, the specific programming language, python) you do not understand, the LLM tools _can_ be your ally.
+Here is the final result I ended up with:
+
+```
+include::options.py[]
+```
+
 
