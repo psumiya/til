@@ -17,16 +17,16 @@ Well, I thought the goal above would be a good use case to explore writing the c
 
 I chose Perplexity AI because it offers an anonymous prompter. And I had used it in the past for another TIL as part of my experiments with Rust, see here: https://github.com/psumiya/til/blob/main/rust/script-to-move-generated-rust-binary.adoc
 
-=== Problem Breakdown
+== Problem Breakdown
 Here is how I broke down the problem:
 
 * How would I invoke Robinhood APIs?
 * Hoping a JSON response is returned, how would I parse the JSON response?
 * How would I filter, format, and display the necessary results?
 
-=== Prompts
+== Prompts
 
-==== Here is a view of the search session
+=== Here is a view of the search session
 * PDF View: link:search-session.pdf[]
 * Perplexity Link: https://www.perplexity.ai/search/sample-code-to-Gzg53YXjSpCfx.bJD7kTFA
 
@@ -71,7 +71,7 @@ create a table of chain_symbol, opening_strategy, net_amount_direction, net_amou
 ** I needed to limit the data to past 6 months.
 . ValueError: Invalid isoformat string: '2024-03-25T15:10:57.063284Z'
 
-=== Summary
+== Summary
 
 Fun Fact, again: I do not know Python, yet!
 
@@ -82,7 +82,7 @@ Here is the final result I ended up with:
 
 [source:python]
 ----
-include::options.py[]
+include::options.py[options.py]
 ----
 
-
+include::Options.adoc[]

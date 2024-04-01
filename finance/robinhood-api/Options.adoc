@@ -1,4 +1,4 @@
-= Run options.py
+=== Run options.py
 
 To run the `options.py` file, you first need the following items;
 
