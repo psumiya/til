@@ -80,8 +80,9 @@ What these LLM tools and this experiment shows is if you are looking to hack som
 
 Here is the final result I ended up with:
 
-```
+[source:python]
+----
 include::options.py[]
-```
+----
 
 

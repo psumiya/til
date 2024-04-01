@@ -1,0 +1,21 @@
+= Run options.py
+
+To run the `options.py` file, you first need the following items;
+
+* Your Robinhood Account Number
+* A valid Authorization Header Token
+
+You can view these by intercepting any of the API calls that the Robinhood web application executes.
+
+Open the Developer view of your browser and navigate to the Network tab. Select a network call, then look at the request headers. You will see a request header like this: `Authorization: Bearer long-token-string`.
+
+The account number will likely be in the Api's URL.
+
+Once you have obtained the above two values, the file can be run as follows:
+
+[source]
+----
+export ACCOUNT_NUMBER=YOUR-ACCOUNT-NUMBER
+export AUTH_HEADER="Bearer long-token-string"
+python3 options.py
+----
