@@ -28,4 +28,4 @@ Inspired by https://github.com/simonw/til.
 
 == finance
 
-* link:finance/robinhood-api/group-option-trades-by-option-chain.adoc[Group Robinhood Option Trades by Option Chain]
+* link:finance/robinhood-api/group-option-trades-by-option-chain.adoc[Group Robinhood Option Trades by Option Chain] - Mar-31-2024
