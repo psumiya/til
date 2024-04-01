@@ -2,7 +2,7 @@
 
 Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
-5 TILs so far.
+6 TILs so far.
 
 Inspired by https://github.com/simonw/til.
 
@@ -25,3 +25,7 @@ Inspired by https://github.com/simonw/til.
 == jmh
 
 * link:jmh/setup-jmh-for-a-gradle-project.adoc[Setup JMH for a Gradle Project] - Feb-16-2023
+
+== finance
+
+* link:finance/robinhood-api/group-option-trades-by-option-chain.adoc[Group Robinhood Option Trades by Option Chain]
