@@ -35,7 +35,7 @@ Here are the prompts, copied from the above search session that I tried along wi
 . sample code to read robinhood api
 ** This returned a 3rd party library based code, as well as using username and password. I was a little uncomfortable passing in credentials to a 3rd party library for this experiment.
 . show me the same code but without using the robin_stocks dependency
-** Now I could see some code that used Authorization headers. I decided to snag the necessary request headers from the network tab in browser's developer view, and export them as environment variables to connect to the APIs. That way I would not need to keep signing-in wioth my username/password and my experiments could just use the credentials from session on Robinhood.
+** Now I could see some code that used Authorization headers. I decided to snag the necessary request headers from the network tab in browser's developer view, and export them as environment variables to connect to the APIs. That way I would not need to keep signing-in with my username/password and my experiments could just use the credentials from session on Robinhood.
 ** How do I view the response?
 . also add code to print the current holdings
 . also print history
