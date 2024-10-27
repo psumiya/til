@@ -1,0 +1,441 @@
+= RSS to HTML using XSLT
+
+I was wondering how I can get an RSS Feed of my Mastodon profile displayed on my personal blog.
+
+== tl;dr
+I added RSS Feed from Mastodon to my blog here: https://sumiya.page/social.html
+
+What did I need?
+
+* An XSLT to transform the RSS XML to HTML.
+* A few lines of javascript to fetch the RSS XML and XSLT, and use XSLT transform to emit an HTML.
+
+All the fetch and render logic happens in the browser. There is no backend/server side code involved. This may break in future as the approach will likely not work with CORS-protected RSS sites, which for some reason, my Mastodon server (hachyderm) does not yet enforce.
+
+Code snippets as at the time of writing this TIL.
+
+XSLT:
+
+```xslt
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="html" encoding="UTF-8" indent="yes" />
+
+    <xsl:template match="/">
+        <xsl:apply-templates select="//item"/>
+    </xsl:template>
+
+    <xsl:template match="item">
+        <article id="article">
+            <xsl:if test="description">
+                <xsl:value-of select="description" disable-output-escaping="yes"/>
+            </xsl:if>
+
+            <xsl:if test="pubDate">
+                <footer>
+                    <small>
+                        Published: <xsl:value-of select="pubDate"/>
+                        <xsl:if test="link">
+                            | <a>
+                                <xsl:attribute name="href">
+                                    <xsl:value-of select="link"/>
+                                </xsl:attribute>
+                                Read more
+                            </a>
+                        </xsl:if>
+                    </small>
+                </footer>
+            </xsl:if>
+        </article>
+    </xsl:template>
+</xsl:stylesheet>
+```
+
+Javascript:
+
+```javascript
+const RSS_URL = `https://hachyderm.io/@sumiya.rss`;
+const RSS_XSLT = `mastodon_profile_feed.xsl`;
+
+fetch(RSS_URL)
+  .then(response => response.text())
+  .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+  .then(rssXml => {
+    const xsltProcessor = new XSLTProcessor();
+    fetch(RSS_XSLT)
+      .then(response => response.text())
+      .then(xslt => {
+        const xsl = new window.DOMParser().parseFromString(xslt, "text/xml");
+        xsltProcess`or.importStylesheet(xsl);
+        const resultDocument = xsltProcessor.transformToFragment(rssXml, document);
+        if (resultDocument) {
+            document.getElementById("mastodon").appendChild(resultDocument);
+        }
+      });
+  });
+```
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en-US" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Social</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="assets/css/picocss/pico.classless.min.css">
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <hgroup>
+                <h1>Social</h1>
+                <p>Social Feed from my Mastodon Profile</p>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li><a href="https://hachyderm.io/@sumiya">Mastodon</a></li>
+                    <li><a href="https://hachyderm.io/@sumiya.rss">RSS Feed</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="mastodon"></section>
+    </main>
+</body>
+
+<script src="social.js"></script>
+
+</html>
+```
+
+== Approach
+To view the RSS feed of a mastodon account, you append `.rss` at the end.
+
+I looked at the feed: https://hachyderm.io/@sumiya.rss
+
+Then I asked Claude the following couple of questions:
+
+=== Question 1
+
+```
+Show me an example of converting a rss feed to html. Note that the feed contains a list of `items`.
+
+Item has a description.
+
+Description has text.
+
+The text is escaped html.
+
+I need the output to be something that can be rendered by a browser.
+
+Use plain javascript.
+```
+
+==== Claude Response
+I'll create a JavaScript function that converts an RSS feed to HTML, handling escaped HTML in the description.
+
+This code provides a complete solution for converting RSS feed data to rendered HTML. Here are the key features:
+
+1. Handles escaped HTML in descriptions using a `decodeHtmlEntities` helper function
+2. Includes basic styling for clean presentation
+3. Handles optional fields (title, link, pubDate)
+4. Includes error handling for invalid feed data
+5. Provides semantic HTML structure using `<article>` tags
+6. Formats dates into a readable format
+
+To use it, simply pass your RSS feed object to the `rssToHtml` function:
+
+```javascript
+const feed = {
+    items: [
+        {
+            title: "My Article",
+            description: {
+                text: "&lt;p&gt;Hello world!&lt;/p&gt;"
+            }
+        }
+    ]
+};
+
+const html = rssToHtml(feed);
+```
+
+Would you like me to modify anything about the implementation? For example, I could:
+- Add more styling options
+- Include additional RSS fields
+- Add support for feed metadata
+- Implement different HTML structures.
+
+==== Full Code Snippet provided by Claude
+
+```
+
+
+// Function to decode HTML entities
+function decodeHtmlEntities(text) {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    return textarea.value;
+}
+
+// Main function to convert RSS feed to HTML
+function rssToHtml(rssFeed) {
+    // Ensure we have items to process
+    if (!rssFeed.items || !Array.isArray(rssFeed.items)) {
+        return '<div class="error">No items found in RSS feed</div>';
+    }
+
+    // Generate HTML for each item
+    const itemsHtml = rssFeed.items.map(item => {
+        // Safely get the description
+        const description = item.description?.text || '';
+
+        // Decode HTML entities in the description
+        const decodedDescription = decodeHtmlEntities(description);
+
+        return `
+            <article class="rss-item">
+                ${item.title ? `<h2 class="item-title">${item.title}</h2>` : ''}
+                ${item.link ? `<a href="${item.link}" class="item-link">Read more</a>` : ''}
+                ${decodedDescription ? `
+                    <div class="item-description">
+                        ${decodedDescription}
+                    </div>
+                ` : ''}
+                ${item.pubDate ? `
+                    <div class="item-date">
+                        Published: ${new Date(item.pubDate).toLocaleDateString()}
+                    </div>
+                ` : ''}
+            </article>
+        `;
+    }).join('');
+
+    // Wrap in a container with basic styling
+    return `
+        <div class="rss-feed">
+            <style>
+                .rss-feed {
+                    max-width: 800px;
+                    margin: 0 auto;
+                    font-family: Arial, sans-serif;
+                }
+                .rss-item {
+                    margin-bottom: 2em;
+                    padding: 1em;
+                    border-bottom: 1px solid #eee;
+                }
+                .item-title {
+                    margin: 0 0 0.5em 0;
+                    color: #333;
+                }
+                .item-link {
+                    display: inline-block;
+                    margin: 0.5em 0;
+                    color: #0066cc;
+                    text-decoration: none;
+                }
+                .item-description {
+                    margin: 1em 0;
+                    line-height: 1.5;
+                }
+                .item-date {
+                    color: #666;
+                    font-size: 0.9em;
+                }
+            </style>
+            ${itemsHtml}
+        </div>
+    `;
+}
+
+// Example usage:
+const sampleFeed = {
+    items: [
+        {
+            title: "Sample Article",
+            link: "https://example.com/article",
+            description: {
+                text: "&lt;p&gt;This is a sample article with &lt;strong&gt;formatted&lt;/strong&gt; text.&lt;/p&gt;"
+            },
+            pubDate: "2024-10-26T12:00:00Z"
+        }
+    ]
+};
+
+// Convert and add to document
+document.body.innerHTML = rssToHtml(sampleFeed);
+```
+
+=== Question 2
+
+```
+Can you use an XSLT transform to achieve the same result?
+```
+
+==== Claude Response
+
+I'll create an XSLT stylesheet to transform RSS feed XML into HTML.
+
+To use this transformation, you can either:
+
+1. Use JavaScript in the browser:
+```javascript
+// Load the XML and XSLT
+const xmlString = '...'; // Your RSS XML
+const xsltString = '...'; // The XSLT stylesheet above
+
+// Create the XML and XSLT documents
+const parser = new DOMParser();
+const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+const xsltDoc = parser.parseFromString(xsltString, 'text/xml');
+
+// Perform the transformation
+const processor = new XSLTProcessor();
+processor.importStylesheet(xsltDoc);
+const resultDoc = processor.transformToDocument(xmlDoc);
+
+// Insert the result into the page
+document.body.innerHTML = new XMLSerializer().serializeToString(resultDoc);
+```
+
+2. Or use a command-line XSLT processor like `xsltproc`:
+```bash
+xsltproc rss-transform.xslt feed.xml > output.html
+```
+
+Key features of this XSLT solution:
+
+1. Uses `disable-output-escaping="yes"` to properly handle HTML in descriptions
+2. Includes the same styling as the JavaScript version
+3. Handles optional fields
+4. Creates semantic HTML structure
+5. Maintains proper XML namespacing
+6. Provides clean, indented output
+
+Would you like me to:
+- Add support for additional RSS elements?
+- Modify the HTML structure?
+- Add more styling options?
+- Include handling for different RSS versions.
+
+==== Full Code Snippet provided by Claude
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- rss-transform.xslt -->
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="html" encoding="UTF-8" indent="yes" />
+
+    <!-- Root template -->
+    <xsl:template match="/">
+        <html>
+            <head>
+                <style>
+                    .rss-feed {
+                        max-width: 800px;
+                        margin: 0 auto;
+                        font-family: Arial, sans-serif;
+                    }
+                    .rss-item {
+                        margin-bottom: 2em;
+                        padding: 1em;
+                        border-bottom: 1px solid #eee;
+                    }
+                    .item-title {
+                        margin: 0 0 0.5em 0;
+                        color: #333;
+                    }
+                    .item-link {
+                        display: inline-block;
+                        margin: 0.5em 0;
+                        color: #0066cc;
+                        text-decoration: none;
+                    }
+                    .item-description {
+                        margin: 1em 0;
+                        line-height: 1.5;
+                    }
+                    .item-date {
+                        color: #666;
+                        font-size: 0.9em;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="rss-feed">
+                    <xsl:apply-templates select="//item"/>
+                </div>
+            </body>
+        </html>
+    </xsl:template>
+
+    <!-- Template for each RSS item -->
+    <xsl:template match="item">
+        <article class="rss-item">
+            <xsl:if test="title">
+                <h2 class="item-title">
+                    <xsl:value-of select="title"/>
+                </h2>
+            </xsl:if>
+
+            <xsl:if test="link">
+                <a class="item-link">
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="link"/>
+                    </xsl:attribute>
+                    Read more
+                </a>
+            </xsl:if>
+
+            <xsl:if test="description">
+                <div class="item-description">
+                    <xsl:value-of select="description" disable-output-escaping="yes"/>
+                </div>
+            </xsl:if>
+
+            <xsl:if test="pubDate">
+                <div class="item-date">
+                    Published: <xsl:value-of select="pubDate"/>
+                </div>
+            </xsl:if>
+        </article>
+    </xsl:template>
+</xsl:stylesheet>
+
+<!-- Example RSS Feed -->
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Sample RSS Feed</title>
+        <link>https://example.com</link>
+        <description>A sample RSS feed</description>
+        <item>
+            <title>First Article</title>
+            <link>https://example.com/article1</link>
+            <description>&lt;p&gt;This is the first article with &lt;strong&gt;formatted&lt;/strong&gt; text.&lt;/p&gt;</description>
+            <pubDate>Wed, 26 Oct 2024 12:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Second Article</title>
+            <link>https://example.com/article2</link>
+            <description>&lt;p&gt;Another article with &lt;em&gt;formatted&lt;/em&gt; content.&lt;/p&gt;</description>
+            <pubDate>Wed, 26 Oct 2024 13:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
+```
+
+I used the last output, adjusting it to standardize the styling per my blog.
+
+This was my first time using Claude. I used the free version and these are the first two questions I asked (so far, the only two).
