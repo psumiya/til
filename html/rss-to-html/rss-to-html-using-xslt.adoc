@@ -5,7 +5,7 @@ I was wondering how I can get an RSS Feed of my Mastodon profile displayed on my
 == tl;dr
 I added RSS Feed from Mastodon to my blog here: https://sumiya.page/social.html
 
-What did I need?
+What did I end up doing?
 
 * An XSLT to transform the RSS XML to HTML.
 * A few lines of javascript to fetch the RSS XML and XSLT, and use XSLT transform to emit an HTML.
