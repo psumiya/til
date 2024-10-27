@@ -122,7 +122,7 @@ To view the RSS feed of a mastodon account, you append `.rss` at the end.
 
 I looked at the feed: https://hachyderm.io/@sumiya.rss
 
-Then I asked Claude the following couple of questions:
+I wanted to try and see how good http://claude.ai/[Claude] (from Anthropic) could be at this task. I asked Claude the following couple of questions:
 
 === Question 1
 
