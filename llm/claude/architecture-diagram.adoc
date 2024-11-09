@@ -211,3 +211,9 @@ Would you like me to adjust anything in either diagram? For example, I could:
 - Modify the layout or grouping
 - Include additional components or connections
 ====
+
+== Summary
+
+I used the above information to eventually end up with the following diagram: https://github.com/psumiya/amazon-or-aws/blob/main/Diagram.md.
+
+And here is the write-up where I used the above diagram: https://sumiya.page/amazonoraws-feature-updates-nov-2024.html
