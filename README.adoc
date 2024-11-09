@@ -2,9 +2,13 @@
 
 Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
-7 TILs so far.
+8 TILs so far.
 
 Inspired by https://github.com/simonw/til.
+
+== llm
+
+* link:llm/claude/architecture-diagram.adoc/[Claude/Mermaid/Markdown llm instructions for architecture diagram]
 
 == rust
 
