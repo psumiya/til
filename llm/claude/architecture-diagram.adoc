@@ -1,0 +1,213 @@
+= Architecture Diagram with Claude / Mermaid / Markdown
+
+When I was drafting a post about some recent updates I made to my site amazonoraws.com, I wanted to also add an image to give a visual to the narration I had. Here's what I asked Claude (claude.ai):
+
+== Prompt
+
+[example]
+====
+For the following details, can you draw an architecture diagram?
+[source]
+----
+The open-sourced pattern provides a reusable solution for:
+
+* Data ingestion from multiple data formats (JSON/RSS/Atom)
+* Automated scheduling using EventBridge scheduler
+* Serverless execution using AWS Lambda
+* S3 data storage
+
+Here is the GitHub repository for the above pattern: https://github.com/psumiya/s3-uploader/tree/main[S3 Uploader]
+
+Additionally, for rendering on the browser, I am using an XSLT to HTML transform pattern that loads the asynchronously fetched feeds into a given HTML div container. In the past, I added a similar integration to my blog; see details here: https://github.com/psumiya/til/blob/main/html/rss-to-html/rss-to-html-using-xslt.adoc[rss-to-html-using-xslt.adoc].
+----
+====
+
+== Response
+
+[example]
+====
+I'll create a Mermaid diagram showing both the AWS backend architecture for data ingestion and the frontend rendering pattern.
+
+
+
+```mermaid
+flowchart TB
+    subgraph "AWS Cloud"
+        EB[EventBridge Scheduler]
+        Lambda[AWS Lambda]
+        S3[(S3 Bucket)]
+
+        EB -->|"Scheduled Trigger"| Lambda
+
+        subgraph "Lambda Function"
+            direction TB
+            FH[Feed Handler]
+            JSON[JSON Parser]
+            RSS[RSS Parser]
+            ATOM[Atom Parser]
+
+            FH --> JSON
+            FH --> RSS
+            FH --> ATOM
+        end
+
+        JSON & RSS & ATOM -->|Write Data| S3
+    end
+
+    subgraph "External Sources"
+        AWS_BLOG[AWS Blog RSS]
+        LWIA[Last Week in AWS RSS]
+        ARCH_BLOG[AWS Architecture Blog RSS]
+        COMM_BLOG[AWS Community Blog Atom]
+        JSON_API[JSON APIs]
+
+        AWS_BLOG & LWIA & ARCH_BLOG & COMM_BLOG & JSON_API -->|Fetch| Lambda
+    end
+
+    subgraph "Frontend Rendering"
+        Browser[Web Browser]
+        XSLT[XSLT Processor]
+        DIV[HTML DIV Container]
+
+        Browser -->|1. Async Request| S3
+        S3 -->|2. Feed Data| Browser
+        Browser -->|3. Transform| XSLT
+        XSLT -->|4. Rendered HTML| DIV
+    end
+
+    classDef aws fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:black;
+    classDef browser fill:#4285F4,stroke:#232F3E,stroke-width:2px,color:white;
+    classDef external fill:#c7c7c7,stroke:#232F3E,stroke-width:2px;
+
+    class EB,Lambda,S3 aws;
+    class Browser,XSLT,DIV browser;
+    class AWS_BLOG,LWIA,ARCH_BLOG,COMM_BLOG,JSON_API external;
+
+```
+
+I've created a comprehensive architecture diagram that shows:
+
+1. AWS Backend:
+- EventBridge Scheduler triggering the Lambda function
+- Lambda function with multiple parsers for different formats
+- S3 bucket for data storage
+- External data sources (RSS/Atom feeds and JSON APIs)
+
+2. Frontend Rendering:
+- Browser fetching data from S3
+- XSLT transformation process
+- Final rendering in HTML DIV container
+
+The diagram uses color coding:
+- Orange for AWS services
+- Blue for browser-side components
+- Gray for external sources
+
+Would you like me to adjust any part of the architecture diagram or add more details to any specific component?
+====
+
+== Follow-up
+
+[example]
+====
+[source]
+----
+Split the image into two diagrams:
+* AWS Backend
+* Frontend Rendering
+
+====
+
+== Follow-up Response
+
+[example]
+====
+I'll create two separate diagrams to show the AWS backend architecture and frontend rendering pattern more clearly.
+
+```mermaid
+flowchart TB
+    subgraph "AWS Cloud"
+        style AWS_Cloud fill:#f5f5f5,stroke:#333,stroke-width:2px
+        EB[EventBridge Scheduler]
+        Lambda[AWS Lambda]
+        S3[(S3 Bucket)]
+
+        EB -->|"Scheduled Trigger"| Lambda
+
+        subgraph "Lambda Function"
+            direction TB
+            FH[Feed Handler]
+            JSON[JSON Parser]
+            RSS[RSS Parser]
+            ATOM[Atom Parser]
+
+            FH --> JSON
+            FH --> RSS
+            FH --> ATOM
+        end
+
+        JSON & RSS & ATOM -->|Write Data| S3
+    end
+
+    subgraph "External Sources"
+        style External_Sources fill:#f9f9f9,stroke:#333,stroke-width:2px
+        AWS_BLOG[AWS Blog RSS]
+        LWIA[Last Week in AWS RSS]
+        ARCH_BLOG[AWS Architecture Blog RSS]
+        COMM_BLOG[AWS Community Blog Atom]
+        JSON_API[JSON APIs]
+
+        AWS_BLOG & LWIA & ARCH_BLOG & COMM_BLOG & JSON_API -->|Fetch| Lambda
+    end
+
+    classDef aws fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:black;
+    classDef external fill:#c7c7c7,stroke:#232F3E,stroke-width:2px;
+
+    class EB,Lambda,S3 aws;
+    class AWS_BLOG,LWIA,ARCH_BLOG,COMM_BLOG,JSON_API external;
+
+```
+
+```mermaid
+flowchart LR
+    subgraph "Frontend Rendering"
+        style Frontend_Rendering fill:#f5f5f5,stroke:#333,stroke-width:2px
+        Browser[Web Browser]
+
+        subgraph "Browser Processing"
+            style Browser_Processing fill:#f9f9f9,stroke:#333,stroke-width:2px
+            XSLT[XSLT Processor]
+            DIV[HTML DIV Container]
+        end
+
+        S3[(AWS S3 Bucket)] -->|1. Feed Data| Browser
+        Browser -->|2. Transform| XSLT
+        XSLT -->|3. Rendered HTML| DIV
+    end
+
+    classDef aws fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:black;
+    classDef browser fill:#4285F4,stroke:#232F3E,stroke-width:2px,color:white;
+
+    class S3 aws;
+    class Browser,XSLT,DIV browser;
+
+```
+
+I've split the architecture into two distinct diagrams:
+
+1. AWS Backend Architecture:
+   - Shows the EventBridge Scheduler, Lambda function with multiple parsers, and S3 storage
+   - Includes external data sources and their connection to Lambda
+   - Uses orange coloring for AWS services and gray for external sources
+
+2. Frontend Rendering Architecture:
+   - Shows the browser-side processing flow
+   - Illustrates the XSLT transformation process
+   - Demonstrates how the rendered content reaches the HTML DIV container
+   - Uses blue coloring for browser components and orange for AWS S3
+
+Would you like me to adjust anything in either diagram? For example, I could:
+- Add more detailed flow annotations
+- Modify the layout or grouping
+- Include additional components or connections
+====
