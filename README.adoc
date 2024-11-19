@@ -2,7 +2,7 @@
 
 Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
-8 TILs so far.
+9 TILs so far.
 
 Inspired by https://github.com/simonw/til.
 
@@ -19,6 +19,8 @@ Inspired by https://github.com/simonw/til.
 * link:asciidoc/embed-gif-in-asciidoc.adoc/[Embed Gif in AsciiDoc] - Feb-04-2023
 
 == html
+
+* link:html/rss-to-html/rss-to-html-bluesky.adoc/[Display Bluesky RSS Feed on personal blog using XSLT] - Nov-18-2024
 
 * link:html/rss-to-html/rss-to-html.adoc/[RSS Feed to HTML in the browser using XSLT] - Oct-26-2024
 
