@@ -1,0 +1,20 @@
+= Bluesky RSS Feed
+
+TIL that Bluesky has a RSS Feed of a user's post.
+
+Go to a user's profile, and then append `/rss` to view a feed.
+
+For example, to view my Bluesky feed, go to my profile, `https://bsky.app/profile/psumiya.bsky.social` and then append `/rss`, such that the final link is `https://bsky.app/profile/psumiya.bsky.social/rss`. Entering that in a browser (Chrome) shows the RSS Feed.
+
+== Show RSS Feed on my Blog
+
+I used the above information to integrate my personal blog to show my Bluesky posts.
+
+I had already integrated my Mastodon posts a few weeks back (see link:rss-to-html-using-xslt.adoc[RSS to HTML using XSLT]]), so I used a similar setup.
+
+Due to CORS, I needed to setup a background fetch and refresh of my Bluesky posts. So I setup a Lambda that runs every hour and refreshes my Bluesky RSS feed and writes it to S3. I use the S3 file to render the posts on my blog. Here is how I had done something similar for link:https://sumiya.page/amazonoraws-feature-updates-nov-2024.html#_behind_the_scenes[amazonoraws.com RSS/Atom rendering].
+
+I used my link:https://github.com/psumiya/s3-uploader/blob/main/infrastructure/template.yaml[S3 Uploader] template to setup an EventBridge cron that triggers a lambda and writes latest Bluesky RSS feed to S3.
+
+My social feed with above setup is available at link:https://sumiya.page/social.html[https://sumiya.page/social.html].
+
