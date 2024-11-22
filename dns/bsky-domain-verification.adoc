@@ -12,7 +12,7 @@ Eventually, I realized my domain used to be on Google Domains. Which Google sold
 
 So I created an account on SquareSpace and found my domain. Then added a TXT record.
 
-Tried verification through BlueSky UI as mentioned in docs - and failed.
+Tried verification through Bluesky UI as mentioned in docs - and failed.
 
 Executed a terminal nslookup - no luck still.
 
@@ -20,7 +20,7 @@ Executed a terminal nslookup - no luck still.
 
 I then recalled I had set up DNS Records for this domain on Amazon Route53.
 
-After finding the right account, I went to `Route 53` --> `Hosted Zones` --> `Create Record` and added a TXT Record Type, with `Record Name` as `_atproto` and value as `did=did:plc:zzx2jxijrnytskb3pxq7csxw`. Note that these are the values already visible to you on the BlueSky site when you follow their instructions.
+After finding the right account, I went to `Route 53` --> `Hosted Zones` --> `Create Record` and added a TXT Record Type, with `Record Name` as `_atproto` and value as `did=did:plc:zzx2jxijrnytskb3pxq7csxw`. Note that these are the values already visible to you on the Bluesky site when you follow their instructions.
 
 I left the remaining values as whatever Route53 had on as default and saved this Record.
 
@@ -38,10 +38,10 @@ _atproto.sumiya.page	text = "did=did:plc:zzx2jxijrnytskb3pxq7csxw"
 Authoritative answers can be found from:
 ----
 
-Attempted verification again on BluSky, and BlueSky was also able to validate successfully.
+Attempted verification again on Bluesky, and Bluesky was also able to validate successfully.
 
-Proceeded to continue with BlueSky instructions and my handle was successfully customized to `sumiya@sumiya.page`.
+Proceeded to continue with remaining Bluesky instructions and my handle was successfully customized to `sumiya@sumiya.page`.
 
-link:https://bsky.app/profile/sumiya.page[]
+link:https://bsky.app/profile/sumiya.page[My Bluesky Profile]
 
 Additional TIL: link:../html/rss-to-html/rss-to-html-bluesky.adoc[Show Your BlueSky Posts on your Website using BlueSky's RSS Feed]
