@@ -2,9 +2,13 @@
 
 Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
-9 TILs so far.
+10 TILs so far.
 
 Inspired by https://github.com/simonw/til.
+
+== dns
+
+* link:dns/bsky-domain-verification.adoc[BlueSky Identify Verification - Custom BlueSky Handle if you own a Domain]
 
 == llm
 

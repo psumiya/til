@@ -6,6 +6,8 @@ Go to a user's profile, and then append `/rss` to view a feed.
 
 For example, to view my Bluesky feed, go to my profile, `https://bsky.app/profile/psumiya.bsky.social` and then append `/rss`, such that the final link is `https://bsky.app/profile/psumiya.bsky.social/rss`. Entering that in a browser (Chrome) shows the RSS Feed.
 
+Note that Bluesky redirects it to a different identifier that is associated to your identity, this is how it looks for my profile: `https://bsky.app/profile/did:plc:zzx2jxijrnytskb3pxq7csxw/rss`
+
 == Show RSS Feed on my Blog
 
 I used the above information to integrate my personal blog to show my Bluesky posts.
