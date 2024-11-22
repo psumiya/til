@@ -8,7 +8,7 @@ Inspired by https://github.com/simonw/til.
 
 == dns
 
-* link:dns/bsky-domain-verification.adoc[BlueSky Identify Verification - Custom BlueSky Handle if you own a Domain]
+* link:dns/bsky-domain-verification.adoc[Bluesky Identify Verification - Custom Bluesky Handle if you own a Domain]
 
 == llm
 
