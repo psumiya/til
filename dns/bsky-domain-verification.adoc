@@ -1,0 +1,47 @@
+= Bluesky Identity Verification
+
+You can verify your identity on Bluesky if you have your own domain.
+
+The details are on Bluesky docs here: link:https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial[How to verify your Bluesky account]
+
+tl;dr - You add a TXT record to your domain. Bluesky uses this TXT record to verify your identity.
+
+This TIL is because I had not looked at my domain in a couple of years and had forgotten where exactly my DNS records were setup :).
+
+Eventually, I realized my domain used to be on Google Domains. Which Google sold as a business to Squarespace.
+
+So I created an account on SquareSpace and found my domain. Then added a TXT record.
+
+Tried verification through BlueSky UI as mentioned in docs - and failed.
+
+Executed a terminal nslookup - no luck still.
+
+`nslookup _atproto.sumiya.page`
+
+I then recalled I had set up DNS Records for this domain on Amazon Route53.
+
+After finding the right account, I went to `Route 53` --> `Hosted Zones` --> `Create Record` and added a TXT Record Type, with `Record Name` as `_atproto` and value as `did=did:plc:zzx2jxijrnytskb3pxq7csxw`. Note that these are the values already visible to you on the BlueSky site when you follow their instructions.
+
+I left the remaining values as whatever Route53 had on as default and saved this Record.
+
+Then did another `nslookup` and this time I was successful.
+
+[source]
+----
+nslookup -type=TXT _atproto.sumiya.page
+Server:		38.100.216.35
+Address:	38.100.216.35#53
+
+Non-authoritative answer:
+_atproto.sumiya.page	text = "did=did:plc:zzx2jxijrnytskb3pxq7csxw"
+
+Authoritative answers can be found from:
+----
+
+Attempted verification again on BluSky, and BlueSky was also able to validate successfully.
+
+Proceeded to continue with BlueSky instructions and my handle was successfully customized to `sumiya@sumiya.page`.
+
+link:https://bsky.app/profile/sumiya.page[]
+
+Additional TIL: link:../html/rss-to-html/rss-to-html-bluesky.adoc[Show Your BlueSky Posts on your Website using BlueSky's RSS Feed]
