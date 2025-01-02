@@ -4,8 +4,9 @@ I was looking to embed a gif on my github repository's README for https://amazon
 
 Turns out you can simply include it as an image.
 
-```
+[source]
+----
 image:amazon-or-aws.gif[amazonoraws.com]
-```
+----
 
 View the final result here: https://github.com/psumiya/amazon-or-aws/blob/main/README.adoc[README]

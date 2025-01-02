@@ -2,7 +2,7 @@
 
 Short form content for some quick learnings as I work through different projects. Long form content available at https://sumiya.page.
 
-10 TILs so far.
+11 TILs so far.
 
 Inspired by https://github.com/simonw/til.
 
@@ -41,3 +41,7 @@ Inspired by https://github.com/simonw/til.
 == finance
 
 * link:finance/robinhood-api/group-option-trades-by-option-chain.adoc[Group Robinhood Option Trades by Option Chain] - Mar-31-2024
+
+== bluesky
+
+* link:bluesky/share-on-bluesky-intent-button.adoc[Share on Bluesky using Bluesky Icon from Font Awesome] - Jan-1-2025
