@@ -30,7 +30,7 @@ Inspired by https://github.com/simonw/til.
 
 * link:html/rss-to-html/rss-to-html-bluesky.adoc/[Display Bluesky RSS Feed on personal blog using XSLT] - Nov-18-2024
 
-* link:html/rss-to-html/rss-to-html.adoc/[RSS Feed to HTML in the browser using XSLT] - Oct-26-2024
+* link:html/rss-to-html/rss-to-html-using-xslt.adoc/[RSS Feed to HTML in the browser using XSLT] - Oct-26-2024
 
 * link:html/automatic-redirect-from-html-to-another-html-using-http-equiv.adoc/[Automatic Re-direct from one HTML page to another page] - Feb-04-2023
 
