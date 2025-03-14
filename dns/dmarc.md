@@ -1,6 +1,6 @@
-= Email Delivery - SPF, DKIM, and DMARC
+# Email Delivery - SPF, DKIM, and DMARC
 
-== What are SPF, DKIM, and DMARC and how are they useful?
+## What are SPF, DKIM, and DMARC and how are they useful?
 
 Here is what Claude tells me how SPF, DKIM, and DMARC work together to keep a healthy email delivery system.
 
@@ -51,7 +51,7 @@ flowchart TD
     K --> M[Spam/Quarantine]
 ```
 
-== What behaviors can be influenced by various DMARC settings?
+## What behaviors can be influenced by various DMARC settings?
 
 Here are a couple of variations showing how the email server's behavior differs when DMARC is set to `none` versus when DMARC is set to `reject`.
 
@@ -99,7 +99,7 @@ The progression typically goes:
 2. Move to "quarantine" policy (not shown in this diagram)
 3. Eventually implement "reject" policy when confident in email authentication setup
 
-== Explore
+## Explore
 
 We can use the `dig` command in terminal to look at DMARC configuration of a public DNS:
 
