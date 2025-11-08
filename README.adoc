@@ -49,3 +49,7 @@ Inspired by https://github.com/simonw/til.
 == bluesky
 
 * link:bluesky/share-on-bluesky-intent-button.adoc[Share on Bluesky using Bluesky Icon from Font Awesome] - Jan-1-2025
+
+== mac tools
+
+* link:mac-tools/imagemagick.adoc[Merge Screenshots on Mac] - Nov-8-2025

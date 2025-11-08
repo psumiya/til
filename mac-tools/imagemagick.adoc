@@ -1,0 +1,22 @@
+= ImageMagick
+
+I was looking for a way to merge two screenshots together on a Mac.
+
+It was a little difficult to do so manually, so I looked for tools online.
+
+Found this free utility, imagemagick.
+
+Here is how I used it.
+
+Install: `brew install imagemagick`
+
+Merge _a.png_ and _b.png_ horizontally and save it to _c.png_:
+
+`magick a.png b.png +append c.png`
+
+Merge _a.png_ and _b.png_ horizontally and save it to _c.png_:
+
+`magick a.png b.png -append c.png`
+
+
+
