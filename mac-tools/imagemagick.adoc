@@ -14,7 +14,7 @@ Merge _a.png_ and _b.png_ horizontally and save it to _c.png_:
 
 `magick a.png b.png +append c.png`
 
-Merge _a.png_ and _b.png_ horizontally and save it to _c.png_:
+Merge _a.png_ and _b.png_ vertically and save it to _c.png_:
 
 `magick a.png b.png -append c.png`
 
