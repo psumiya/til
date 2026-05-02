@@ -4,8 +4,78 @@ I got a Claude Pro subscription and ran out of tokens for some pretty routine st
 
 So I asked Claude what could be wrong and it suggested some global defaults for the Claude Code agent. Here is that recommendation as of today (May 1, 2026).
 
-Here are the Claude Code global defaults as suggested by Claude: https://claude.ai/public/artifacts/9d42b901-26a0-4097-bb27-e7a7d47cf85a
+Here are the Claude Code global defaults as suggested by Claude: https://claude.ai/public/artifacts/9d42b901-26a0-4097-bb27-e7a7d47cf85a (direct link to the file). You can drop this file at `~/.claude/CLAUDE.md` for global defaults or in your project root for per-project defaults. These rules will load every session automatically, so you won't have to think about them again.
 
-++++
-<iframe src="https://claude.site/public/artifacts/9d42b901-26a0-4097-bb27-e7a7d47cf85a/embed" title="CLAUDE.md" width="100%" height="600" frameborder="0" allow="clipboard-write" allowfullscreen></iframe>
-++++
+Copied the markdown below for reference:
+
+[source,md]
+----
+# Claude Code Global Defaults
+
+---
+
+## Model & Effort
+
+- Default model: **Sonnet**. Never switch to Opus unless the task explicitly requires deep
+  architectural reasoning or a cross-cutting refactor touching 5+ files.
+- Default effort: **medium**. Use `low` for mechanical edits (renaming, formatting, small fixes).
+  Use `high` only when asked to reason through a hard design decision.
+- Never use `xhigh` or `max` effort unless I explicitly say "think hard" or "deep reasoning."
+
+---
+
+## Planning First
+
+- Before touching any code that spans more than 2 files, produce a short plan:
+  list each file you'll modify and one sentence on what changes. Wait for my go-ahead.
+- For greenfield features, propose a file/folder structure before writing any code.
+- If my request is ambiguous, ask one clarifying question — don't guess and generate.
+
+---
+
+## Response Style
+
+- Be terse. No preamble, no "Great question!", no restating what I asked.
+- Code responses: output the diff or the changed function only — not the full file unless I ask.
+- Explanations: max 3 sentences unless I ask for more.
+- No unsolicited suggestions, refactors, or "you might also want to…" additions.
+
+---
+
+## Context Hygiene (automatic)
+
+- When the task changes topic, say: "New topic — recommend `/clear` to reset context."
+- When conversation grows long mid-task, proactively run `/compact` before the next code change.
+- Never re-read or re-summarize files already discussed in this session unless I ask.
+
+---
+
+## Tool & Feature Defaults
+
+- Web search: off unless I ask for docs, an API reference, or say "look it up."
+- Extended thinking: off by default; on when I say "think through this" or effort is `high`.
+- File reads: read only the files directly relevant to the current task. Don't explore the
+  whole repo speculatively.
+
+---
+
+## Per-Task Model Guide (applied automatically)
+
+| Task type                              | Model   | Effort  |
+|----------------------------------------|---------|---------|
+| Typos, renames, formatting             | Sonnet  | low     |
+| Bug fixes, small features              | Sonnet  | medium  |
+| New components / API endpoints         | Sonnet  | medium  |
+| DB schema changes, multi-file refactor | Sonnet  | high    |
+| Architecture decisions, hard debugging | Opus    | high    |
+| Planning a greenfield project          | Opus    | medium  |
+
+---
+
+## What I Never Want
+
+- Don't add comments to code unless I ask.
+- Don't wrap responses in unnecessary markdown when plain text works.
+- Don't run tests or linters speculatively — only when I ask or the task clearly requires it.
+- Don't apologize or hedge. Just do the task or ask the one question that unblocks you.
+----
