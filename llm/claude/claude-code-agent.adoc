@@ -4,7 +4,9 @@ I got a Claude Pro subscription and ran out of tokens for some pretty routine st
 
 So I asked Claude what could be wrong and it suggested some global defaults for the Claude Code agent. 
 
-Here are the Claude Code global defaults as suggested by Claude: https://claude.ai/public/artifacts/9d42b901-26a0-4097-bb27-e7a7d47cf85a (direct link to the file). You can drop this file at `~/.claude/CLAUDE.md` for global defaults or in your project root for per-project defaults. These rules will load every session automatically, so you won't have to think about them again.
+Here are the Claude Code global defaults as suggested by Claude: https://claude.ai/public/artifacts/9d42b901-26a0-4097-bb27-e7a7d47cf85a (direct link to the file). 
+
+You can drop this file at `~/.claude/CLAUDE.md` for global defaults or in your project root for per-project defaults. These rules will load every session automatically, so you won't have to think about them again.
 
 Copied the markdown below for reference:
 
