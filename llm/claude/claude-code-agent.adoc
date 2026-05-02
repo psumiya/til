@@ -1,0 +1,11 @@
+= Claude Code Global Defaults
+
+I got a Claude Pro subscription and ran out of tokens for some pretty routine stuff during my interactions. I have had the free version generate way more code than what I was getting on Pro. 
+
+So I asked Claude what could be wrong and it suggested some global defaults for the Claude Code agent. Here is that recommendation as of today (May 1, 2026).
+
+Here are the Claude Code global defaults as suggested by Claude: https://claude.ai/public/artifacts/9d42b901-26a0-4097-bb27-e7a7d47cf85a
+
+++++
+<iframe src="https://claude.site/public/artifacts/9d42b901-26a0-4097-bb27-e7a7d47cf85a/embed" title="CLAUDE.md" width="100%" height="600" frameborder="0" allow="clipboard-write" allowfullscreen></iframe>
+++++
