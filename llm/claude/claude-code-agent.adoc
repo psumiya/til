@@ -1,14 +1,20 @@
 = Claude Code Global Defaults
 
-I got a Claude Pro subscription and ran out of tokens for some pretty routine stuff during my interactions. I have had the free version generate way more code than what I was getting on Pro. 
+I got a Claude Pro subscription and ran out of tokens for some pretty routine stuff during my interactions. I have had the free version on browser generate way more code than what I was getting on Pro plan in my editor. 
 
-So I asked Claude what could be wrong and it suggested some global defaults for the Claude Code agent. 
+So I asked Claude what could be wrong and it suggested some global defaults for the Claude Code agent.
 
-Here are the Claude Code global defaults as suggested by Claude: https://claude.ai/public/artifacts/9d42b901-26a0-4097-bb27-e7a7d47cf85a (direct link to the file). 
+Here was my first prompt to Claude:
 
-You can drop this file at `~/.claude/CLAUDE.md` for global defaults or in your project root for per-project defaults. These rules will load every session automatically, so you won't have to think about them again.
+[quote,role="user"]
+Claude Code is exhausting my entire session's worth of usage in a single prompt. Is there a way for me to setup the workspace such that I am able to do some meaningful work with Claude. I already have a Pro plan, and it seems very expensive to be able to send a single prompt in one session.
 
-Copied the markdown below for reference:
+And this conversation led to a couple of follow-up questions, which resulted eventually in the file that I have copied below for reference.
+
+Here is the full conversation with Claude: https://claude.ai/share/8ba31f31-4978-46b7-a181-a38c0f57004a
+
+
+Here are the Claude Code global defaults as suggested by Claude: 
 
 [source,md]
 ----
@@ -81,3 +87,7 @@ Copied the markdown below for reference:
 - Don't run tests or linters speculatively — only when I ask or the task clearly requires it.
 - Don't apologize or hedge. Just do the task or ask the one question that unblocks you.
 ----
+
+You can drop this file at `~/.claude/CLAUDE.md` for global defaults or in your project root for per-project defaults. 
+
+These rules will load every session automatically, so you won't have to think about them again.
